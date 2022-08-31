@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">Hello World</string>
+    <string name="app_name">Pesan Minuman</string>
+    <string name="topping_label">TOPPINGS</string>
+    <string name="WCtopping_label">Whipped cream</string>
+    <string name="Ctopping_label">Chocolate</string>
+    <string name="qty_label">QUANTITY</string>
+    <string name="min_label">-</string>
+    <string name="plus_label">+</string>
+    <string name="pcs_label">0</string>
+    <string name="menu_label">Menu</string>
+    <string name="order_label">ORDER</string>
+    <string name="name_order_label">Pesanan dari: Nur Aziz</string>
+    <string name="qty_order_label">Jumlah pesanan: 3</string>
+    <string name="topping_order_label">Topping:</string>
+    <string name="WCtopping_order_label">- Whipped cream: ya/tidak</string>
+    <string name="Ctopping_order_label">- Chocolate: ya/tidak</string>
+    <string name="harga_total_order_label">Harga Total: Rp.35000</string>
+    <string name="name_input">Pesanan dari: %1$s</string>
+    <string name="WCtopping_out">- Whipped cream: %1$s</string>
+    <string name="Ctopping_out">- Chocolate: %1$s</string>
+    <string name="harga_out">Harga Total: Rp. %1$.2f</string>
+    <string name="qty_out">Jumlah pesanan: %1$s</string>
 </resources>
