@@ -14,4 +14,7 @@
     <string name="ideal">Ideal</string>
     <string name="gemuk">Gemuk</string>
     <string name="kategori_x">Kategori: %1$s</string>
+    <string name="berat_error">Beratnya berapa sih.</string>
+    <string name="tinggi_error">Tinggi di isi dulu dong.</string>
+    <string name="kelamin_error">Pilih jenis kelamin ya.</string>
 </resources>

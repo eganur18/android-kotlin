@@ -22,17 +22,17 @@ class MainActivity : AppCompatActivity() {
 
         val berat = binding.beratEditText.text.toString()
         if(TextUtils.isEmpty(berat)) {
-            Toast.makeText(this, "Beratnya berapa sih.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.berat_error), Toast.LENGTH_LONG).show()
             return
         }
         val tinggi = binding.tinggiEditText.text.toString()
         if(TextUtils.isEmpty(tinggi)) {
-            Toast.makeText(this, "Tinggi di isi dulu dong.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.tinggi_error), Toast.LENGTH_LONG).show()
             return
         }
         val selectedId = binding.radioGroup.checkedRadioButtonId
         if(selectedId == -1) {
-            Toast.makeText(this, "Pilih jenis kelamin ya.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.kelamin_error), Toast.LENGTH_LONG).show()
             return
         }
         val tinggiCm = tinggi.toFloat() / 100
