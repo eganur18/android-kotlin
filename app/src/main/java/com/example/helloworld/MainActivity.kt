@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         textView = findViewById(R.id.textView)
         val button = findViewById<Button>(R.id.button)
         showData(data[index])
-        
+
         button.setOnClickListener {
             index = (index + 1) % data.size
             showData(data[index])
