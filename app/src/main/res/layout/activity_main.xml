@@ -12,7 +12,7 @@
         android:id="@+id/haloTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="0"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -23,6 +23,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="GANTI LABEL" />
+        android:text="+1" />
 
 </LinearLayout>
