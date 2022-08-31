@@ -9,4 +9,9 @@
     <string name="hitung_label">HITUNG</string>
     <string name="kategori_label">Kategori: Ideal</string>
     <string name="bmi_label">BMI: 24,35</string>
+    <string name="bmi_x">BMI: %1$.2f</string>
+    <string name="kurus">Kurus</string>
+    <string name="ideal">Ideal</string>
+    <string name="gemuk">Gemuk</string>
+    <string name="kategori_x">Kategori: %1$s</string>
 </resources>

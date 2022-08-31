@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ScrollView>
 
     <TextView
         android:id="@+id/textView"
@@ -131,23 +134,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/bmi_label"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:text="@string/bmi_label" />
 
     <TextView
         android:id="@+id/kategoriTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/kategori_label"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bmiTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/bmiTextView"
+        tools:text="@string/kategori_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
