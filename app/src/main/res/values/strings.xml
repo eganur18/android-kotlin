@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Hello World</string>
+    <string name="app_name">Hitung BMI</string>
+    <string name="label_bmi">Aplikasi Android untuk menghitung body mass index (BMI) sehingga pengguna dapat mengetahui apakah berat badannya ideal, gemuk atau kurus.</string>
+    <string name="berat">Berat badan (kg)</string>
+    <string name="tinggi_label">Tinggi Badan (cm)</string>
+    <string name="kelamin_label">Jenis kelamin</string>
+    <string name="pria_label">Pria</string>
+    <string name="wanita_label">Wanita</string>
+    <string name="hitung_label">HITUNG</string>
+    <string name="kategori_label">Kategori: Ideal</string>
+    <string name="bmi_label">BMI: 24,35</string>
 </resources>
