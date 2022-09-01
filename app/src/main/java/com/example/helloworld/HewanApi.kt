@@ -14,7 +14,7 @@ private val moshi = Moshi.Builder()                         //ini untuk build mo
     .build()
 
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))                //moshi dilakukan untuk membuat json jd POJO
+    .addConverterFactory(MoshiConverterFactory.create(moshi))                //moshi dilakukan untuk membuat json jd POJO Plain Old Java Object
     .baseUrl(BASE_URL)                                                      //url nya
     .build()
 
@@ -31,4 +31,7 @@ object HewanApi {
     val service: HewanApiService by lazy {
         retrofit.create(HewanApiService::class.java)        //untuk create hewanapiservice
     }
+    //method untuk pull gambar dr internet
+    fun getHewanUrl(nama: String) = "$BASE_URL$nama.jpg"     //gethewan bernama string dan dia akan mengembalikan string
+
 }

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helloworld.databinding.ListItemBinding
+import com.squareup.picasso.Picasso
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() { //private val ditambahkan utk mendapatkan data
 
@@ -13,7 +14,8 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() { //private v
     class ViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) { //perlu layout, maka perlu ditambahkan dalam kurung itu
 
         fun bind(hewan: Hewan) = with(binding) {
-            imageView.setImageResource(hewan.gambarResId)
+            Picasso.get().load(HewanApi.getHewanUrl(hewan.imageId)).into(imageView);   //load gambar dari internet
+//            imageView.setImageResource(hewan.gambarResId)  //ini udh ga perlu
             textView.text = hewan.nama
             textView2.text = hewan.namaLatin
 
