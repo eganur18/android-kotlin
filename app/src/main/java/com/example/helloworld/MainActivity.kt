@@ -2,6 +2,8 @@ package com.example.helloworld
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.example.helloworld.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val divider = DividerItemDecoration(this, RecyclerView.VERTICAL)
+        binding.recyclerView.addItemDecoration(divider) // membuat pembatas garis list item
         binding.recyclerView.adapter = MainAdapter(getData())
         binding.recyclerView.setHasFixedSize(true) //agar tidak berubah ukuran
     }
