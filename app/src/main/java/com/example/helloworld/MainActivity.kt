@@ -2,8 +2,6 @@ package com.example.helloworld
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
@@ -18,18 +16,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("MVVM", "onCreate dijalankan")
+//        Log.d("MVVM", "onCreate dijalankan")
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val divider = DividerItemDecoration(this, RecyclerView.VERTICAL)
         binding.recyclerView.addItemDecoration(divider) // membuat pembatas garis list item
-        binding.recyclerView.adapter = MainAdapter(ViewModel.data)
+        val adapter = MainAdapter()
+        binding.recyclerView.adapter = adapter
         binding.recyclerView.setHasFixedSize(true) //agar tidak berubah ukuran
+
+        ViewModel.getData().observe(this) {
+            adapter.updateData(it)
+        }
+
     }
 
-    override fun onStart() {
+    /*override fun onStart() {
         Log.d("MVVM", "onStart dijalankan")
         super.onStart()
     }
@@ -42,5 +46,5 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         Log.d("MVVM", "onDestroy dijalankan")
         super.onDestroy()
-    }
+    }*/
 }

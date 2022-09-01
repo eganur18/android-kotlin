@@ -1,15 +1,19 @@
 package com.example.helloworld
 
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
 
 class MainViewModel : ViewModel() {
 
-    val data = initData()
-
+//        val data = initData()
+    val data = MutableLiveData<List<Hewan>>()
     init {
-        Log.d("MVVM", "viewModel di init")
+//        Log.d("MVVM", "viewModel di init")
+        data.value = initData()
     }
+
+    fun getData(): LiveData<List<Hewan>> = data
 
     private fun initData(): List<Hewan>{
         return listOf(
@@ -26,9 +30,9 @@ class MainViewModel : ViewModel() {
         )
     }
 
-    override fun onCleared() {
+    /*override fun onCleared() {
         Log.d("MVVM", "ViewModel di-cleared")
         super.onCleared()
-    }
+    }*/
 
 }
