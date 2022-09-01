@@ -2,6 +2,7 @@ package com.example.helloworld
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
@@ -30,7 +31,28 @@ class MainActivity : AppCompatActivity() {
         ViewModel.getData().observe(this) {
             adapter.updateData(it)
         }
+        ViewModel.getStatus().observe(this){
+            updateUI(it)
+        }
 
+    }
+
+    private fun updateUI(status: ApiStatus) {
+        when (status) {
+            ApiStatus.LOADING -> {  //POSISI PROGRESS BAR LOOP
+                binding.recyclerView.visibility = View.GONE
+                binding.errorTextView.visibility = View.GONE
+                binding.progressBar.visibility = View.VISIBLE
+            } ApiStatus.SUCCESS -> {
+                binding.recyclerView.visibility = View.VISIBLE  //POSISI PROGRESS BAR HILANG DAN MUNCUL LISTVIEW
+                binding.errorTextView.visibility = View.GONE
+                binding.progressBar.visibility = View.GONE
+            } ApiStatus.FAILED -> {     //POSISI KONEKSI TIDAK ADA DAN MUNCUL TEKS "KONEKSI ERROR"
+                binding.recyclerView.visibility = View.GONE
+                binding.errorTextView.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
+            }
+        }
     }
 
     /*override fun onStart() {

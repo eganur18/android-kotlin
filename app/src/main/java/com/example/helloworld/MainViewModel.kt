@@ -17,6 +17,8 @@ class MainViewModel : ViewModel() {
      */
 //        val data = initData()
     val data = MutableLiveData<List<Hewan>>()
+    private val status = MutableLiveData<ApiStatus>() //init progress bar api enum
+
     init {
 //        Log.d("MVVM", "viewModel di init")
         // melakukan proses yang asinkron dengan coroutine
@@ -30,16 +32,21 @@ class MainViewModel : ViewModel() {
     private fun retrieveDataFromServer() {              //karna ambil data dr internet maka buat coroutine blocking
         viewModelScope.launch(Dispatchers.IO) {
             try {           //karna ambil data dr internet maka harus ada try
+                status.postValue(ApiStatus.LOADING)             //progress bar enum call
                 val result = HewanApi.service.getHewan()
+                status.postValue(ApiStatus.SUCCESS)
 //                Log.d("MainViewModel", result)
                 data.postValue(result)
             } catch (e: Exception) {        //Jika gagal maka tulis juga error nya kenapa
+                status.postValue(ApiStatus.FAILED)
                 Log.d("MainViewModel", "Gagal: ${e.message}")
             }
         }
     }
 
     fun getData(): LiveData<List<Hewan>> = data
+
+    fun getStatus(): LiveData<ApiStatus> = status       //Untuk get status dari enum
 
     /*override fun onCleared() {
         Log.d("MVVM", "ViewModel di-cleared")
