@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.example.helloworld.database.Diary
 import com.example.helloworld.database.DiaryDb
@@ -34,7 +35,8 @@ class DetailActivity : AppCompatActivity() {
             val diaryId = intent.getIntExtra(KEY_DIARY_ID, 0)
             viewModel.getDiary(diaryId).observe(this) {
                 selectedDiary = it          //jika di mode edit diary di isi dengan it, it itu akan menandakan data akan di isi dari database
-                updateUI(it)
+                if (it != null) updateUI(it)
+
             }
         } else {
             supportActionBar?.title = getString(R.string.tambah_activity)
@@ -44,10 +46,17 @@ class DetailActivity : AppCompatActivity() {
     private fun updateUI(diary: Diary) {
         binding.judulEditText.setText(diary.judul)
         binding.diaryEditText.setText(diary.diary)
+        invalidateMenu()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean { //hanya menampilkan menu saja
         menuInflater.inflate(R.menu.menu_detail, menu)
+        return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        val item = menu.findItem(R.id.menuHapus)
+        item.isVisible = selectedDiary != null
         return true
     }
 
@@ -56,8 +65,24 @@ class DetailActivity : AppCompatActivity() {
 //            finish()        //untuk kembali ke home atau main activity
             simpanDiary()
             return true
+        } else if (item.itemId == R.id.menuHapus) {
+            hapusDiary()
+            return true
         }
         return false
+    }
+
+    private fun hapusDiary() {
+        val builder = AlertDialog.Builder(this)
+            .setMessage("Hapus diary ini?")
+            .setPositiveButton("Hapus") { _, _ ->
+                selectedDiary?.let { viewModel.deleteDiary(it) }
+                finish()
+            }
+            .setNegativeButton("Batal") { dialog, _ ->
+                dialog.dismiss()
+            }
+        builder.create().show()
     }
 
     private fun simpanDiary() {

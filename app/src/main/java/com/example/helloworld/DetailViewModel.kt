@@ -21,6 +21,11 @@ class DetailViewModel(private val db: DiaryDao) : ViewModel() {
             db.update(diary)
         }
     }
+    fun deleteDiary(diary: Diary){
+        viewModelScope.launch(Dispatchers.IO) {
+            db.delete(diary)
+        }
+    }
     fun getDiary(id: Int) = db.getDiary(id)
 }
 
