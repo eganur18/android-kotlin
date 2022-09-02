@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
 class DetailViewModel(private val db: DiaryDao) : ViewModel() {
+                                  //untuk memanggil diary dr database
     fun insertDiary(diary: Diary){
         viewModelScope.launch(Dispatchers.IO) {
             db.insert(diary)

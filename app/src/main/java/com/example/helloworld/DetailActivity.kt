@@ -3,7 +3,6 @@ package com.example.helloworld
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -47,6 +46,7 @@ class DetailActivity : AppCompatActivity() {
             Toast.makeText(this, getString(R.string.judul_harus_diisi), Toast.LENGTH_LONG).show()
             return
         }
+
         val diary = binding.diaryEditText.text.toString()
         if (TextUtils.isEmpty(diary)) {
             Toast.makeText(this, getString(R.string.diary_harus_diisi), Toast.LENGTH_LONG).show()
