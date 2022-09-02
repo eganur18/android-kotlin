@@ -3,7 +3,7 @@ package com.example.helloworld
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.data.observe(this) {
 //            Log.d("DATA", "Jumlah data: ${it.size}")
+            binding.emptyTextView.visibility = if (it.isEmpty())
+                View.VISIBLE
+            else
+                View.GONE
             adapter.submitList(it)
         }
 
