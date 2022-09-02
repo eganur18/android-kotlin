@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.example.helloworld.database.DiaryDb
 import com.example.helloworld.databinding.ActivityMainBinding
 
@@ -26,8 +28,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetailActivity::class.java)     //membuat intent ke detail activity
             startActivity(intent)           //start intent atau membuka ke detail activity
         }
+        val divider = DividerItemDecoration(this, RecyclerView.VERTICAL)
+        binding.recyclerView.addItemDecoration(divider)
+
+        val adapter = MainAdapter()
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.setHasFixedSize(true)
+
         viewModel.data.observe(this) {
-            Log.d("DATA", "Jumlah data: ${it.size}")
+//            Log.d("DATA", "Jumlah data: ${it.size}")
+            adapter.submitList(it)
         }
 
     }
